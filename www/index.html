@@ -1,91 +1,171 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Retro Gaming Emulator</title>
-    <style>
-        body {
-            background-color: #121212;
-            color: #ffffff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .login-box {
-            background: #1e1e1e;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-            text-align: center;
-            width: 300px;
-        }
-        h2 { margin-bottom: 24px; color: #00adb5; }
-        input {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            border: 1px solid #333;
-            border-radius: 5px;
-            background: #2d2d2d;
-            color: white;
-            box-sizing: border-box;
-        }
-        button {
-            width: 100%;
-            padding: 12px;
-            background: #00adb5;
-            border: none;
-            color: white;
-            font-weight: bold;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-        button:hover { background: #007a80; }
-        .forgot-pass {
-            display: block;
-            margin-top: 15px;
-            color: #a9a9a9;
-            font-size: 13px;
-            text-decoration: none;
-            cursor: pointer;
-        }
-        .forgot-pass:hover { color: #00adb5; text-decoration: underline; }
-        .error { color: #ff4444; font-size: 14px; margin-top: 10px; display: none; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Retro Gaming</title>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #050a12;
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .login-container {
+      background-color: #0b1426;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(56, 189, 248, 0.2);
+      border: 1px solid #38bdf8;
+      width: 320px;
+      text-align: center;
+    }
+
+    h2 {
+      color: #38bdf8;
+      margin-bottom: 20px;
+    }
+
+    .input-group {
+      margin-bottom: 15px;
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 14px;
+      color: #94a3b8;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #1e293b;
+      background-color: #0f172a;
+      color: #fff;
+      box-sizing: border-box;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #38bdf8;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #38bdf8;
+      color: #050a12;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #0ea5e9;
+    }
+
+    .error-message {
+      color: #ef4444;
+      font-size: 14px;
+      margin-top: 15px;
+      display: none;
+    }
+
+    .forgot-link {
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .forgot-link a {
+      color: #38bdf8;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .forgot-link a:hover {
+      text-decoration: underline;
+    }
+
+    .admin-message {
+      margin-top: 15px;
+      padding: 12px;
+      border-radius: 6px;
+      background-color: #111827;
+      border: 1px solid #38bdf8;
+      color: #cbd5e1;
+      font-size: 14px;
+      display: none;
+      text-align: left;
+    }
+  </style>
 </head>
+
 <body>
 
-<div class="login-box">
-    <h2>EmuJS Login</h2>
-    <input type="text" id="username" placeholder="Usuario (Código)">
-    <input type="password" id="password" placeholder="Contraseña">
-    <button onclick="validarLogin()">Ingresar</button>
-    <a class="forgot-pass" onclick="recuperarContrasena()">¿Olvidaste tu contraseña?</a>
-    <div id="error-msg" class="error">Usuario o contraseña incorrectos</div>
-</div>
+  <div class="login-container">
+    <h2>RETRO GAMING</h2>
 
-<script>
-    function validarLogin() {
-        const user = document.getElementById('username').value;
-        const pass = document.getElementById('password').value;
+    <form id="loginForm" onsubmit="validarLogin(event)">
+      <div class="input-group">
+        <label for="username">Usuario</label>
+        <input type="text" id="username" required autocomplete="off">
+      </div>
 
-        // Credenciales oficiales para la sustentación
-        if (user === "25200666" && pass === "retro2026") {
-            window.location.href = "play.html?core=nes&name=Super%20Mario%20Bros&rom=https://vimm.net/rom/download/5574";
-        } else {
-            document.getElementById('error-msg').style.display = 'block';
-        }
+      <div class="input-group">
+        <label for="password">Contraseña</label>
+        <input type="password" id="password" required>
+      </div>
+
+      <button type="submit">Iniciar Sesión</button>
+
+      <div id="errorMsg" class="error-message">
+        Usuario o contraseña incorrectos
+      </div>
+    </form>
+
+    <div class="forgot-link">
+      <a onclick="mostrarMensajeAdmin()">¿Olvidaste tu contraseña?</a>
+    </div>
+
+    <div id="adminMsg" class="admin-message">
+      Para cambiar la contraseña, comunícate con el administrador del proyecto.
+    </div>
+  </div>
+
+  <script>
+    function validarLogin(event) {
+      event.preventDefault();
+
+      const user = document.getElementById("username").value.trim();
+      const pass = document.getElementById("password").value.trim();
+      const errorMsg = document.getElementById("errorMsg");
+
+      if (user === "usuario" && pass === "retro2026") {
+        sessionStorage.setItem("retroLogin", "true");
+        errorMsg.style.display = "none";
+        window.location.href = "menu.html";
+      } else {
+        errorMsg.style.display = "block";
+      }
     }
 
-    function recuperarContrasena() {
-        alert("Para restablecer tu acceso, contacta al administrador del sistema o revisa la documentación del proyecto.");
+    function mostrarMensajeAdmin() {
+      const adminMsg = document.getElementById("adminMsg");
+      adminMsg.style.display = "block";
     }
-</script>
+  </script>
 
 </body>
 </html>
