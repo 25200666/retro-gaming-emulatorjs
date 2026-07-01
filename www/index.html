@@ -1,49 +1,77 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>RETRO GAMING WEB</title>
-  <link rel="stylesheet" href="css/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Retro Gaming Emulator</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-box {
+            background: #1e1e1e;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            text-align: center;
+            width: 300px;
+        }
+        h2 { margin-bottom: 24px; color: #00adb5; }
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #333;
+            border-radius: 5px;
+            background: #2d2d2d;
+            color: white;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #00adb5;
+            border: none;
+            color: white;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover { background: #007a80; }
+        .error { color: #ff4444; font-size: 14px; margin-top: 10px; display: none; }
+    </style>
 </head>
-
 <body>
-  <header>
-    <h1>Retro Gaming Web</h1>
-    <p>Proyecto Final SO - Podman con EmulatorJS</p>
-  </header>
 
-  <main class="contenedor">
+<div class="login-box">
+    <h2>EmuJS Login</h2>
+    <input type="text" id="username" placeholder="Usuario (Código)">
+    <input type="password" id="password" placeholder="Contraseña">
+    <button onclick="validarLogin()">Ingresar</button>
+    <div id="error-msg" class="error">Usuario o contraseña incorrectos</div>
+</div>
 
-    <section class="tarjeta">
-      <h2>Atari 2600</h2>
-      <p>Juego de prueba de Atari</p>
-      <a class="boton"
-         href="play.html?core=atari2600&amp;rom=/roms/atari/juego_atari.bin&amp;name=Juego%20Atari">
-         Jugar en la Atari
-      </a>
-    </section>
+<script>
+    function validarLogin() {
+        const user = document.getElementById('username').value;
+        const pass = document.getElementById('password').value;
 
-    <section class="tarjeta">
-      <h2>Game Boy</h2>
-      <p>Juego de prueba de Game Boy</p>
-      <a class="boton"
-         href="play.html?core=gb&amp;rom=/roms/gameboy/juego_gameboy.gbc&amp;name=Juego%20GameBoy">
-         Jugar en la Game Boy
-      </a>
-    </section>
+        // Aquí definen sus credenciales de acceso para la exposición
+        if (user === "25200666" && pass === "retro2026") {
+            window.location.href = "play.html";
+        } else {
+            document.getElementById('error-msg').style.display = 'block';
+        }
+    }
+</script>
 
-    <section class="tarjeta">
-      <h2>NES</h2>
-      <p>Juego de prueba de la NES</p>
-      <a class="boton"
-         href="play.html?core=nes&amp;rom=/roms/nes/juego_nes.nes&amp;name=Juego%20NES">
-         Jugar en la NES
-      </a>
-    </section>
-
-  </main>
-
-  <footer>
-    Emulación solo de títulos legales
-  </footer>
 </body>
+</html>
