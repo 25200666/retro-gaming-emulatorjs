@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>RETRO GAMING WEB</title>
+  <link rel="stylesheet" href="css/styles.css">
+
+  <script>
+    if (sessionStorage.getItem("retroLogin") !== "true") {
+      window.location.href = "index.html";
+    }
+  </script>
+</head>
+
+<body>
+  <header>
+    <h1>Retro Gaming Web</h1>
+    <p>Proyecto Final SO - Podman con EmulatorJS</p>
+    <p>Selecciona una consola para iniciar el emulador</p>
+  </header>
+
+  <main class="contenedor">
+
+    <section class="tarjeta">
+      <h2>Atari 2600</h2>
+      <p>Juego retro de la Atari ejecutado con EmulatorJS</p>
+      <a class="boton"
+         href="play.html?core=atari2600&amp;rom=roms/atari/juego_atari.bin&amp;name=Juego%20Atari">
+         Iniciar Atari
+      </a>
+    </section>
+
+    <section class="tarjeta">
+      <h2>Game Boy</h2>
+      <p>Juego retro de la Game Boy ejeutado con EmulatorJS</p>
+      <a class="boton"
+         href="play.html?core=gb&amp;rom=roms/gameboy/juego_gameboy.gbc&amp;name=Juego%20GameBoy">
+         Iniciar Game Boy
+      </a>
+    </section>
+
+    <section class="tarjeta">
+      <h2>NES</h2>
+      <p>Juego retro de la NES ejecutado con EmulatorJS</p>
+      <a class="boton"
+         href="play.html?core=nes&amp;rom=roms/nes/juego_nes.nes&amp;name=Juego%20NES">
+         Iniciar NES
+      </a>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Emulación solo de títulos legales</p>
+
+    <button class="boton" onclick="cerrarSesion()">
+      Cerrar sesión
+    </button>
+  </footer>
+
+  <script>
+    function cerrarSesion() {
+      sessionStorage.removeItem("retroLogin");
+      window.location.href = "index.html";
+    }
+  </script>
+
+</body>
+</html>
