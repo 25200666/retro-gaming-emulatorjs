@@ -4,13 +4,21 @@
   <meta charset="UTF-8">
   <title>Emulador - RETRO GAMING WEB</title>
   <link rel="stylesheet" href="css/styles.css">
+
+  <script>
+    if (sessionStorage.getItem("retroLogin") !== "true") {
+      window.location.href = "index.html";
+    }
+  </script>
 </head>
 
 <body>
+
   <header>
     <h1 id="titulo">Cargando juego...</h1>
+
     <p>
-      <a class="link-volver" href="index.html">ELEGIR OTRA CONSOLA</a>
+      <a class="link-volver" href="menu.html">ELEGIR OTRA CONSOLA</a>
     </p>
   </header>
 
@@ -18,16 +26,15 @@
     <div class="contenedor-emulador">
       <div id="game">Cargando emulador...</div>
     </div>
+
+    <div id="panel-latencia">
+      Esperando las mediciones de latencia...
+    </div>
+
+    <button class="boton" onclick="descargarCSV()">
+      Descargar las mediciones CSV
+    </button>
   </main>
-
-  <div id="panel-latencia">
-       Esperando las mediciones de latencia...
-  </div>
-
-  <button class="boton" onclick="descargarCSV()">
-       Descargar las mediciones CSV
-  </button>
-</main> 
 
   <script>
     const params = new URLSearchParams(window.location.search);
@@ -40,13 +47,13 @@
 
     if (!core || !rom) {
       document.body.innerHTML =
-        "<h1>Error: faltan datos del juego</h1><a href='index.html'>Volver</a>";
+        "<h1>Error: faltan datos del juego</h1><a href='menu.html'>Volver</a>";
       throw new Error("Faltan parámetros core o rom");
     }
 
     if (!coresPermitidos.includes(core)) {
       document.body.innerHTML =
-        "<h1>Error: esta consola no está permitida</h1><a href='index.html'>Volver</a>";
+        "<h1>Error: esta consola no está permitida</h1><a href='menu.html'>Volver</a>";
       throw new Error("Core no permitido");
     }
 
@@ -66,6 +73,8 @@
   </script>
 
   <script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
-  <script src="js/medicion_latencia.js"></script>
+  <script src="js/medir_latencia.js"></script>
+
 </body>
 </html>
+
