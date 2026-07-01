@@ -46,6 +46,15 @@
             margin-top: 10px;
         }
         button:hover { background: #007a80; }
+        .forgot-pass {
+            display: block;
+            margin-top: 15px;
+            color: #a9a9a9;
+            font-size: 13px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .forgot-pass:hover { color: #00adb5; text-decoration: underline; }
         .error { color: #ff4444; font-size: 14px; margin-top: 10px; display: none; }
     </style>
 </head>
@@ -56,6 +65,7 @@
     <input type="text" id="username" placeholder="Usuario (Código)">
     <input type="password" id="password" placeholder="Contraseña">
     <button onclick="validarLogin()">Ingresar</button>
+    <a class="forgot-pass" onclick="recuperarContrasena()">¿Olvidaste tu contraseña?</a>
     <div id="error-msg" class="error">Usuario o contraseña incorrectos</div>
 </div>
 
@@ -64,12 +74,16 @@
         const user = document.getElementById('username').value;
         const pass = document.getElementById('password').value;
 
-        // Aquí definen sus credenciales de acceso para la exposición
+        // Credenciales oficiales para la sustentación
         if (user === "25200666" && pass === "retro2026") {
-            window.location.href = "play.html";
+            window.location.href = "play.html?game=nes";
         } else {
             document.getElementById('error-msg').style.display = 'block';
         }
+    }
+
+    function recuperarContrasena() {
+        alert("Para restablecer tu acceso, contacta al administrador del sistema o revisa la documentación del proyecto.");
     }
 </script>
 
