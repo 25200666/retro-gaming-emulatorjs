@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Emulador - RETRO GAMING WEB</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <header>
+    <h1 id="titulo">Cargando juego...</h1>
+    <p>
+      <a class="link-volver" href="index.html">ELEGIR OTRA CONSOLA</a>
+    </p>
+  </header>
+
+  <main>
+    <div class="contenedor-emulador">
+      <div id="game">Cargando emulador...</div>
+    </div>
+  </main>
+
+  <div id="panel-latencia">
+       Esperando las mediciones de latencia...
+  </div>
+
+  <button class="boton" onclick="descargarCSV()">
+       Descargar las mediciones CSV
+  </button>
+</main> 
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+
+    const core = params.get("core");
+    const rom = params.get("rom");
+    const name = params.get("name") || "Juego";
+
+    const coresPermitidos = ["atari2600", "gb", "nes"];
+
+    if (!core || !rom) {
+      document.body.innerHTML =
+        "<h1>Error: faltan datos del juego</h1><a href='index.html'>Volver</a>";
+      throw new Error("Faltan parámetros core o rom");
+    }
+
+    if (!coresPermitidos.includes(core)) {
+      document.body.innerHTML =
+        "<h1>Error: esta consola no está permitida</h1><a href='index.html'>Volver</a>";
+      throw new Error("Core no permitido");
+    }
+
+    document.getElementById("titulo").textContent = name;
+
+    EJS_player = "#game";
+    EJS_core = core;
+    EJS_gameUrl = rom;
+    EJS_gameName = name;
+
+    EJS_pathtodata = "https://cdn.emulatorjs.org/stable/data/";
+
+    EJS_color = "#38bdf8";
+    EJS_backgroundColor = "#050a12";
+    EJS_language = "es-ES";
+    EJS_startOnLoaded = false;
+  </script>
+
+  <script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
+  <script src="js/medicion_latencia.js"></script>
+</body>
+</html>

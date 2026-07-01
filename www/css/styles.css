@@ -1,0 +1,179 @@
+
+/* ----Tema General de la página RETRO GAMING WEB---- */
+
+:root {
+  --color-fondo: #070d14;
+  --color-header: #172232;
+  --color-tarjeta: #1b2636;
+  --color-borde: #334155;
+  --color-acento: #ff3864;
+  --color-acento-hover: #ff1744;
+  --color-texto: #f8fafc;
+  --color-texto-suave: #cbd5e1;
+  --color-emulador: #2b2b2b;
+
+  --fuente-titulo: "Courier New", monospace;
+  --fuente-texto: "Trebuchet MS", Arial, sans-serif;
+  --fuente-retro: "Courier New", monospace;
+}
+
+/* Estilo de Pagina */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: var(--fuente-texto);
+  text-align: center;
+}
+
+header {
+  background: var(--color-header);
+  padding: 28px 20px;
+  border-bottom: 2px solid #111827;
+}
+
+h1 {
+  margin: 0;
+  font-family: var(--fuente-titulo);
+  font-size: 38px;
+  letter-spacing: 5px;
+  color: var(--color-texto);
+  text-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
+}
+
+h2 {
+  font-family: var(--fuente-retro);
+  color: var(--color-acento);
+  letter-spacing: 2px;
+}
+
+p {
+  color: var(--color-texto-suave);
+  font-size: 18px;
+}
+
+/* Catálogo de Juegos */
+
+.contenedor {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin: 45px auto;
+  max-width: 1200px;
+  padding: 0 20px;
+}
+
+.tarjeta {
+  background: var(--color-tarjeta);
+  border: 2px solid var(--color-borde);
+  border-radius: 14px;
+  width: 290px;
+  padding: 35px 25px;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.tarjeta:hover {
+  transform: translateY(-6px);
+  border-color: var(--color-acento);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.35);
+}
+
+.tarjeta p {
+  min-height: 55px;
+}
+
+/* Estilo de los Botones */
+
+.boton {
+  display: inline-block;
+  margin-top: 18px;
+  background: var(--color-acento);
+  color: #020617;
+  padding: 13px 24px;
+  border-radius: 9px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.boton:hover {
+  background: var(--color-acento-hover);
+  transform: scale(1.05);
+}
+
+.link-volver {
+  color: var(--color-acento);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 17px;
+}
+
+.link-volver:hover {
+  color: var(--color-acento-hover);
+}
+
+
+/* Diseño de página del emulador */
+
+.contenedor-emulador {
+  width: 720px;
+  height: 520px;
+  max-width: 95%;
+  margin: 35px auto;
+  border: 4px solid var(--color-acento);
+  background: var(--color-emulador);
+  box-shadow: 0 0 25px rgba(56, 189, 248, 0.35);
+}
+
+#game {
+  width: 100%;
+  height: 100%;
+}
+
+
+/* Pie de página */
+
+footer {
+  margin-top: 40px;
+  padding: 20px;
+  color: var(--color-texto-suave);
+  font-size: 15px;
+}
+
+/* Diseño Responsive */
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 28px;
+    letter-spacing: 3px;
+  }
+
+  .tarjeta {
+    width: 90%;
+  }
+
+  .contenedor-emulador {
+    height: 420px;
+  }
+}
+
+#panel-latencia {
+   width: 720px;
+   max-width: 95%;
+   margin: 20px auto;
+   padding: 15px;
+   background: #111827;
+   border: 2px solid var(--color-acento);
+   color: var(--color-texto);
+   font-family: var(--fuente-retro);
+   font-size: 16px;
+   box-shadow: 0 0 12px rgba(56, 189, 248, 0.25);
+} 

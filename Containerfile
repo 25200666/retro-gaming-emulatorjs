@@ -1,0 +1,5 @@
+FROM docker.io/library/nginx:alpine
+
+COPY www/ /usr/share/nginx/html/
+
+EXPOSE 80
